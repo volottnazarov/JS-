@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="block">
+        <p>1</p>
+        <p>2</p>
+    </div>
+    <p class="www">text1</p>
+    <p class="www">text2</p>
+    <a class="link" href="#">link text html</a>
+    <img src="" alt class="photo">
+    <div class="content"></div>
+    <script>
+        const blockEl = document.querySelector("#block");
+        console.log(blockEl);
+
+        const p1El = document.querySelector('#block p:first-child'); // ссылка на первый абзац с id=block
+        console.log(p1El);
+
+        const wwwEl = document.querySelector('.www:first-of-type'); // ссылка на первый абзац с классом www
+        console.log(wwwEl);
+
+        const linkEl = document.querySelector('.link');
+        linkEl.textContent = 'link text JS'; //меняем текст внутри ссылки
+        linkEl.href = 'https://html-practic.netlify.app/'; // меняем адрес ссылки
+        
+        const imgEl = document.querySelector('.photo'); // заполняем пустой src ссылкой на картинку
+        imgEl.src = './image/smile1.png';
+
+        const contentEl = document.querySelector('.content');
+        const textEl = document.createElement('p'); // доб. в div эл-т <p>
+        textEl.textContent = 'Новый текстовый блок'; // наполняем <p>
+        contentEl.appendChild(textEl); // добавляем <p> в <div>
+        contentEl.removeChild(textEl); // удаляем его
+
+        const btnEl = document.createElement('button'); // создание эл-та Кнопка
+        btnEl.href = '#';
+        let count = 0;
+        btnEl.onclick = function(){  // вывод в консоль кол-во нажатий на кнопку
+            count ++;
+            console.log(count);
+        }
+        // второй вариант подсчета кликов
+        /*btnEl.addEventListener('click', function(e){
+            count ++;
+            console.log(count);
+        });*/
+
+        btnEl.textContent = 'КНОПКА';
+        contentEl.appendChild(btnEl);
+
+        const btnElTwo = document.createElement('button'); // при нажатии на кнопку меняется текст кнопки
+        btnElTwo.href = '#';
+        btnElTwo.textContent = 'Отправить';
+        contentEl.appendChild(btnElTwo);
+        btnElTwo.onclick = function(){
+            btnElTwo.textContent = 'Текс отправлен';
+        }
+
+    </script>
+</body>
+</html>
