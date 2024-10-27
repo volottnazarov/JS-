@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="block">
+
+    </div>
+
+    <div class="elem">
+        <img src="./photo/smile1.png" alt="photo">
+        <div class="content">
+            <h2 class="heading">Lorem, ipsum dolor.</h2>
+            <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, laborum!</p>
+        </div>
+    </div>
+    <div class="item">
+        <div class="elem">
+            <div class="info">
+                <h2 class="subtitle">Lorem, ipsum dolor.</h2>
+            </div>
+        </div>
+    </div>
+    <form class="form" action="#">
+        <input class="form__input" type="text">
+        <button class="btn">Отправить</button>
+    </form>
+    <script>
+        const blockEl = document.querySelector('.block');
+        const itemEl = document.createElement('div');
+        itemEl.classList.add('item');  // присваиваем новому div класс item
+        const pEl = document.createElement('p');
+        pEl.textContent ='Текст внутри';
+        itemEl.appendChild(pEl);
+        blockEl.appendChild(itemEl);
+        pEl.style.color = 'blue';
+        pEl.style.border = '1px solid black';
+        pEl.style.backgroundColor = '#f8f8f8';
+        pEl.style.padding = '16px';
+        itemEl.setAttribute('class', 'item_1'); // меняем класс с item на item_1
+
+        //============================================================================================
+
+        const parEl = document.querySelector('.text');
+        const contEl = document.querySelector('.content'); // const contEl = parEl.parentElement; тоже
+        const imgEl = document.querySelector('img');
+        const elemEl = document.querySelector('.elem');
+        console.log(parEl.previousElementSibling); // вывод в консоль соседний элемент
+        console.log(parEl.parentElement); // вывод в консоль род эл content
+        console.log(imgEl); // вывод в консоль картинку
+        console.log(contEl.parentElement); // вывод в консоль род эл elem
+
+        //=============================================================================================
+
+        let h2El = document.querySelector('.subtitle');
+        while(h2El.parentElement){
+            h2El = h2El.parentElement;
+            console.log(h2El);  // вывод всех родителей
+        }
+
+        //=============================================================================================
+        // При вводе пустого зн-я вывести сообщение и поменять рамку ввода на красный цвет
+        
+        const formEl = document.querySelector('.form');
+        const inputEl = formEl.querySelector('.form__input');
+        const btnEl = formEl.querySelector('.btn');
+
+        const h2Elem = document.createElement('h2');
+        h2Elem.textContent = 'Вы ввели пустую строку!'
+        
+        btnEl.onclick = function(){
+            if(inputEl.value){
+                console.log('Что то есть');
+            }else{
+                formEl.appendChild(h2Elem);
+                inputEl.style.border = '1px solid red';
+            }
+        }
+        
+    </script>
+</body>
+</html>
