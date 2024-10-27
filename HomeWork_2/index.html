@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Homework</title>
+</head>
+<body>
+    <p class="dropdown">Привет :)</p>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button"
+            id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="menu dropdown-menu"
+            aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+    <script>
+        /* 1. Ко всем элементам, имеющим класс dropdown-item, добавьте еще один класс
+           super-dropdown. Используйте методы forEach и querySelectorAll, а
+           также свойство classList у элементов. */
+
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        // первый вариант через setAtrribute
+        /*dropdownItems.forEach(item => {
+            item.setAttribute('class', 'dropdown-item super-dropdown');
+            });*/    
+        
+        dropdownItems.forEach(item => {
+        item.classList.add('super-dropdown');
+        });
+
+        //=============================================================================================
+
+        /*2. У элемента с классом btn необходимо убрать класс btn-secondary, если он
+           присутствует у этого элемента, либо добавить, если такого класса у элемента
+           не было.*/
+
+        const btnElem = document.querySelector('.btn');
+        console.log(btnElem.classList);
+        btnElem.classList.forEach(item => {     // Здесь удаляется класс, если он существует
+            if(item == 'btn-secondary'){
+                btnElem.classList.remove(item);
+            }else{
+                btnElem.classList.add('btn-secondary');
+            }
+        })
+        console.log(btnElem.classList);   // Вывод с уже удаленным классом
+
+        btnElem.classList.forEach(item => {  // Здесь добавляется класс, если такого не существует
+            if(item == 'btn-secondary'){
+                btnElem.classList.remove(item);
+            }else{
+                btnElem.classList.add('btn-secondary');
+            }
+        })
+        console.log(btnElem.classList);  // Вывод уже с добавленным классом
+
+        // Второй вариант
+
+        /*if (btnElement.classList.contains('btn-secondary')) {
+            btnElement.classList.remove('btn-secondary');
+            } else {
+            btnElement.classList.add('btn-secondary');
+            }*/
+
+        //==============================================================================================
+
+        /*3. Необходимо удалить класс dropdown-menu у элемента, у которого
+             присутствует класс menu.*/
+
+        const menuEl = document.querySelector('.menu');
+        if(menuEl){
+            menuEl.classList.remove('dropdown-menu');
+        }
+        console.log(menuEl);
+
+        //==============================================================================================
+
+        /*4. Используя метод insertAdjacentHTML, добавьте после div с классом
+           dropdown следующую разметку: <a href="#">link</a>.*/
+
+        const divDropDown = document.querySelector('.dropdown');
+        divDropDown.insertAdjacentHTML('afterEnd', '<a href="#">link</a>');
+
+        //=============================================================================================
+
+        //5. У элемента с id="dropdownMenuButton" замените id на superDropdown.
+
+        const idDropDown = document.getElementById('dropdownMenuButton');
+        if (idDropDown) {
+            idDropDown.id = 'superDropdown';
+            }
+        console.log(idDropDown);
+
+        //=============================================================================================
+
+        /*6. Добавьте атрибут data-dd со значением 3 элементу, у которого существует
+           атрибут aria-labelledby, равный dropdownMenuButton, используя
+           dataset.*/
+
+        const ariaEl = document.querySelector('[aria-labelledby="dropdownMenuButton"]');
+        if(ariaEl){
+            ariaEl.dataset.dd = '3';
+        }
+
+        //=============================================================================================
+
+        //7. Удалите атрибут type у элемента с классом dropdown-toggle.
+
+        const dropDownTogl = document.querySelector('.dropdown-toggle');
+        if(dropDownTogl){
+            dropDownTogl.removeAttribute('type');
+        }
+    </script>
+</body>
+</html>
