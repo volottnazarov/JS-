@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button">Кнопка 1</button>
+    <button class="button">Кнопка 2</button>
+    <button class="button">Кнопка 3</button>
+    <script>
+        // доб. клика на кнопку с выводом той кнопки в консоль
+
+        const buttonEl = document.querySelectorAll('.button');
+        buttonEl.forEach(element => {
+            element.addEventListener('click', function(event){
+                const target = event.target;
+                console.log(target);
+            })
+        })
+
+        // доб. кнопку 4, кот. считает сколько раз на нее нажали с выводом кол-ва в консоль
+
+        const btn_4 = document.createElement('button');
+        const bodyEl = document.querySelector('body');
+        btn_4.textContent = 'Кнопка 4';
+        bodyEl.append(btn_4);
+        let count = 0;
+        btn_4.addEventListener('click', function(e){
+            count ++;
+            console.log(count);
+        })
+
+        // доб. кнопку 5, при нажатии на кот. меняется текст на кнопке
+        
+        const btn_5 = document.createElement('button');
+        btn_5.textContent = 'Кнопка 5';
+        bodyEl.append(btn_5);
+        btn_5.addEventListener('click', function(e){
+            btn_5.textContent = 'Вы нажали на эту кнопку';
+        })
+    </script>
+</body>
+</html>

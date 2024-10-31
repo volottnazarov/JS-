@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button">Нажми</button>
+    <script>
+        const buttonEl = document.querySelector('.button');
+
+        window.onload = () => {
+            console.log('Страница загрузилась'); // вывод текста при полной загрузке страницы
+          };
+        /*window.addEventListener('load', function(e){
+            console.log('Страница загрузилась');
+        });*/
+
+        buttonEl.onclick = function(){
+            console.log('Событие onclick'); // вывод события onclick
+        }
+
+        buttonEl.addEventListener('click', function(e){
+            console.log('Событие addEventListener '); // вывод события addEventListener
+        });
+    </script>
+</body>
+</html>

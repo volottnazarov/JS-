@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <button class="button">Кнопка</button>
+    </div>
+    
+    <script>
+        // при нажатии на кнопку добавляется заголовок h1
+
+        const buttonEl = document.querySelector('button');
+        const h1El = document.createElement('h1');
+        h1El.textContent = 'Новый заголовок';
+        buttonEl.addEventListener('click', function(e){
+            buttonEl.after(h1El); // можно buttonEl.parentElement.appendChild(h1e1);
+        })
+
+        //создать вторую кнопку , кот будет удалять h1
+
+        const button_2 = document.createElement('button');
+        const contentEl = document.querySelectorAll('.content');
+        button_2.textContent = 'Удалить';
+        buttonEl.after(button_2);
+        button_2.addEventListener('click', function(e){
+            button_2.parentElement.removeChild(h1El);
+        })
+
+        //создать кнопку 3 при наведении => выводится 'Вы навели на данную кнопку', при убирании 
+        // курсора мыши => 'Наведения на кнопку больше нет'
+        
+        const button_3 = document.createElement('button');
+        button_3.textContent = 'Наведение';
+        button_2.after(button_3);
+        button_3.addEventListener('mouseover', function(e){
+            console.log('Вы навели на данную кнопку');
+        })
+        button_3.addEventListener('mouseout', function(e){
+            console.log('Наведения на кнопку больше нет');
+        })
+    </script>
+</body>
+</html>

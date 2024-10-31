@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <button class="button1">Добавить в конец</button>
+        <button class="button2">Удалить первый</button>
+        <button class="button3">Class Click</button>
+        <ul class="ul">
+            <li class="list">Элемент 1</li>
+            <li class="list">Элемент 2</li>
+            <li class="list">Элемент 3</li>
+        </ul>
+    </div>
+    <script>
+        //кнопка добавляет новый элемент списка
+
+        const button1 = document.querySelector('.button1');
+        const contentEl = button1.parentElement;
+        const ulEl = document.querySelector('.ul');
+        const newLiEl = document.createElement('li');
+        newLiEl.textContent = 'Новый эл-т списка'; // если нужно, чтобы много раз доб. нужно разместить 
+        //внутри addEventListener
+        button1.addEventListener('click', function(e){
+            ulEl.appendChild(newLiEl);
+            ulEl.classList.add('list');
+        })
+
+        //кнопка удаляет первый элемент списка
+
+        const button2 = document.querySelector('.button2');
+        const firstLiEl = ulEl.firstElementChild;
+        button2.addEventListener('click', function(e){
+            firstLiEl.remove();
+        })
+
+        //при клике на кнопку 'Class Click' ей добавляется класс 'click'
+
+        const btnClassClick = document.querySelector('.button3');
+        btnClassClick.addEventListener('click', function(e){
+            //btnClassClick.classList.add('click');
+            const target = e.target;
+            target.classList.add('click');
+        })
+
+    </script>
+</body>
+</html>
