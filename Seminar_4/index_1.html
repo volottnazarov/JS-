@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <input type="checkbox" id="check" class="check">
+        <label for="check">Согласен с условиями</label>
+    </div>
+    <button class="button">Отправить</button>
+    <script>
+        const boxEl = document.querySelector('.content');
+        const checkEl = boxEl.querySelector('.check');
+        const buttonEl = document.querySelector('.button');
+        const h2El = document.createElement('h2');
+        h2El.textContent = 'Необходимо подтвердить';
+        h2El.style.color = 'red';
+
+        buttonEl.addEventListener('click', function(e) {
+            if(!checkEl.checked){  //проверка на выбор галочкой в чекбоксе
+                boxEl.appendChild(h2El);
+            }else {
+                boxEl.removeChild(h2El); //removeChild удалит только эл. h2
+            }
+        })
+    </script>
+</body>
+</html>

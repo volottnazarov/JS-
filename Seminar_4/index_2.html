@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <input type="radio" class="radio" id="tea" name="drink">
+        <label for="tea">Чай</label>
+        <input type="radio" class="radio" id="koffee" name="drink">
+        <label for="koffee">Кофе</label>
+    </div>
+    <button class="button">Выбрать</button>
+    <script>
+        const boxEl = document.querySelector('.content');
+        const radioButtons = document.querySelectorAll('.radio');
+        const teaRadio = document.getElementById('tea');
+        const koffeeRadio = document.getElementById('coffee');
+        
+        const buttonEl = document.querySelector('.button');
+        const h2El = document.createElement('h2');
+
+        buttonEl.addEventListener('click', function(e) {
+            radioButtons.forEach(elem => {
+                if(elem.checked){
+                    h2El.textContent = `${elem.nextElementSibling.textContent} нет`;
+                    boxEl.appendChild(h2El);
+                }
+            })
+        })
+    </script>
+</body>
+</html>
