@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+
+    </div>
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataInfo);
+        console.log(data);
+
+        data.forEach(elem =>{
+            console.log(elem.insult);
+        });
+        const divEl = document.querySelector('.content');
+        
+        data.forEach(elem => {
+            const h2El = document.createElement('h2');
+            h2El.classList.add('content__year');
+            h2El.style.color = 'red';
+            h2El.textContent = elem.number;
+            divEl.appendChild(h2El);
+
+            const imgEl = document.createElement('img');
+            imgEl.classList.add('content__image');
+            imgEl.style.width = '150px';
+            imgEl.src = elem.link;
+            divEl.appendChild(imgEl);
+
+            const pEl = document.createElement('p');
+            pEl.classList.add('content__insult');
+            pEl.textContent = elem.insult;
+            divEl.appendChild(pEl);
+
+            const authorEl = document.createElement('cite');
+            authorEl.classList.add('content__author');
+            authorEl.style.fontSize = '10px';
+            authorEl.textContent = elem.createdBy;
+            divEl.appendChild(authorEl);
+        });
+    </script>
+</body>
+</html>
