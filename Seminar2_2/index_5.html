@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Создать банковский счет с методами пополнения и снятия со счета
+
+        class BankAccount {
+            static bankName = "Sber";
+            constructor(accountNumber, balance = 0){
+                this.accountNumber = accountNumber;
+                this.balance = balance;
+            }
+            deposit(dep){
+                console.log(`Зачисление средств: ${dep}P на счет: ${this.accountNumber}, баланс: ${this.balance += dep}P`);
+            }
+            withdraw(draw){
+                if(this.balance >= draw){
+                    console.log(`Списание средств: ${draw}P со счета: ${this.accountNumber}, баланс: ${this.balance -= draw}P`);
+                }else{
+                    console.log('Не хватает средств!');
+                }
+            }
+        }
+
+        const bankAccount = new BankAccount("1234567", 10000);
+        //bankAccount.accountNumber = "12345678";
+        //bankAccount.balance = 10000;
+        bankAccount.deposit(5000);
+        bankAccount.withdraw(7640);
+        bankAccount.withdraw(8000); // Не хватает средств!
+
+    </script>
+</body>
+</html>

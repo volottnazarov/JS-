@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="my-element">
+        <button class="btn">Кнопка</button>
+    </div>
+    <script>
+        const btnEl = document.querySelector(".btn");
+
+        btnEl.addEventListener("click", () => {
+            changeStyleDelayed("my-element", 2000);
+        });
+
+        function changeStyleDelayed(elementId, delay) {
+            setTimeout(() => {
+            const element = document.getElementById(elementId);
+            if (element) {
+            element.style.backgroundColor = 'blue';
+            }
+            }, delay);
+            }
+    </script>
+</body>
+</html>

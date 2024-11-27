@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ЗАМЫКАНИЯ. Ф-я принимает зн-е и возвращает обьект с методами сложения, вычитания, и возвращения значения,
+        //при этом значение доступно только через эти методы.
+
+        const createCalc = (initValue) => {
+            let value = initValue;
+            return{
+                add: function(num){
+                    value += num;
+                },
+                subtract: function(num){
+                    value -= num;
+                },
+                getValue: function(){
+                    return value;
+                }
+            }
+        }
+        const calculate = createCalc(10);
+        calculate.add(10);                 // сначала прибавляется = 20
+        calculate.subtract(15);            // потом вычитается = 5
+        console.log(calculate.getValue()); // вывод 5
+
+        //======================================================================================================
+
+        //Лексический контекст. Замыкание
+
+        function createGreeting(name) {
+            return function() {                    // здесь мы прячем подблоки. Замыкаем.
+                console.log(`Hello, ${name}`);
+            }
+        }
+        const greeting = createGreeting('John');
+        greeting();
+
+        //=======================================================================================================
+
+        function createPasswordChecker(maxLength){
+            return function(password){
+                return password.length <= maxLength;
+            }
+        }
+        const isPasswordValid = createPasswordChecker(8); // не больше 8 символов
+        console.log(isPasswordValid('newPassword'));  // false
+        console.log(isPasswordValid('PassW'));        // true
+    </script>
+</body>
+</html>

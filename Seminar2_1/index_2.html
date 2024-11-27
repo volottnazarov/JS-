@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Дан массив, записать в новый массив четные числа
+
+        const getEvenNumbers = (num) => num.filter(item => item % 2 === 0);
+        console.log(getEvenNumbers([1, 2, 3, 4, 5, 6]));
+        //=======================================================================================================
+
+        // В аргументы пишем массив чисел => среднее значение
+
+        const calcAverage = (num) => {
+            const sum = num.reduce((acc, item) => acc + item, 0); //acc-аккумулятор , reduce-сложение
+            return sum / num.length;
+        }
+        console.log(calcAverage([8, 2, 2, 4, 6]));
+
+        //=======================================================================================================
+
+        // Подается строка, нужно чтобы первые буквы слов стали заглавными
+
+        const firstLetter = (str) => {
+            return str
+                .split(' ')  // разбиваем по пробелу на массив слов
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // первый эл-т заглав.+ режем первую букв
+                .join(' '); // соединяем все обратно в строку
+        }
+        console.log(firstLetter('hello world good by wars'));
+
+
+
+    </script>
+</body>
+</html>

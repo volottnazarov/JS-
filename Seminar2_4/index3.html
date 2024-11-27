@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Написать программу которая загружает данные с сервера с использованием XMLHttpRequest
+        //создать функцию, в ней оьработчик события onload, открыть запрос с помощью open(), 
+        //отправить запрос с помощью send().
+
+        function loadData(url){
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                if(xhr.status != 200){
+                    console.log(`Error ${xhr.status}: ${xhr.statusText}`);
+                }else{
+                    console.log(xhr.responseText);
+                }
+            }
+            xhr.open('GET', url, true);
+            xhr.send();
+        }
+        loadData('http://api.github.com/users/octocat');
+
+        //====================================================================================================
+        
+        //Переписать код с использованием fetch
+
+        fetch('http://api.github.com/users/octocat')
+            .then((result) => {
+                if(result.ok){
+                    return result.text;
+                }
+                throw new Error ('Ошибка, не все ок');
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.error("Много ошибок, решай");
+            });
+
+    </script>
+</body>
+</html>

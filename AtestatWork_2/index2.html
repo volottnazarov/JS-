@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function saveUserData(user, url) {
+            let response = await fetch(url, {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+            });
+            if (!response.ok) {
+                console.log(response.status);
+                throw new Error("Что-то пошло не так: " + response.status);
+            } else {
+                console.log(response.status);
+            }
+        }
+
+        const user = {
+            name: "John Smith",
+            age: 30,
+            email: "john@example.com",
+        };
+
+        const url1 = "https://jsonplaceholder.typicode.com/us";
+        const url2 = "https://jsonplaceholder.typicode.com/users";
+
+        saveUserData(user, url1)
+            .then(() => {
+                console.log("User data saved successfully");
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
+        saveUserData(user, url2)
+            .then(() => {
+                console.log("User data saved successfully");
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    </script>
+</body>
+</html>

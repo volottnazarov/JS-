@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Создать два обьекта, одолжить метод.
+        
+        const Animal = {
+            name: "",
+            eat() {
+                console.log(` ${this.name} ест`);
+            }
+        }
+
+        const Dog = {
+            name: "Лекс",
+            barc() {
+                console.log(` ${this.name} лает`);
+            }
+        }
+
+        Dog.barc();
+        Dog.eat = Animal.eat;  // Одалживание метода у Animal
+        Dog.eat();
+    </script>
+</body>
+</html>

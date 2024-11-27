@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const tasks = [
+        {name: 'task_1', time: 6000},
+        {name: 'task_2', time: 2000},
+        {name: 'task_3', time: 3000},
+        {name: 'task_4', time: 4000},
+        {name: 'task_5', time: 5000}
+        ];
+
+        const allTask = (taskList, interval) => {
+            taskList.forEach(task => {
+                setTimeout(() => {console.log(task.name)}, task.time);
+            })
+        }
+        allTask(tasks, 1000);
+    </script>
+</body>
+</html>

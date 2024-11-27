@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Написать функцию, кот. будет возвращать цепочку прототипов от от 
+        // заданного обьекта obj
+
+        const MusicSeries = {
+            model: "music series",
+            power: 200,
+            batterySize: 2100,
+            boxSize: 0.5,
+            workTime: 45,
+            startWipe(){
+                console.log("Я запущен для уборки");
+                console.log("Я метод music series");
+            },
+        }
+        const Blues = {
+            model: "blues-1",
+            power: 100,
+            batterySize: 2500,
+            boxSize: 0.8,
+            workTime: 55,
+        }
+
+        Object.setPrototypeOf(Blues, MusicSeries); // связывание эл-та Blues с эл-ом MusicSeries
+
+        function getPrototypeChain(obj){
+            const prototypeChain = [];
+            let currentObj = obj;
+            while(currentObj != null){   //пока не поднимемся в самый верх
+                prototypeChain.push(currentObj);
+                currentObj = Object.getPrototypeOf(currentObj);
+            }
+            return prototypeChain;
+        }
+
+        const prototypeChain = getPrototypeChain(Blues);
+        console.log(prototypeChain);
+    </script>
+</body>
+</html>

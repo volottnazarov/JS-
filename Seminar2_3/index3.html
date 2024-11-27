@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Product {
+            constructor(name, price){
+                this.name = name;             //имя товара
+                this.price = price;   //цена товара за еденицу
+            }
+        }
+
+        class ShoppingCart {
+            constructor(customerName, initialTotal){
+                this.customerName = customerName;     //имя покупателя
+                this.totalCost = initialTotal;     //стоимость заказа. Может быть равна 0
+                this.items = [];
+            }
+            addItems(product, quantity = 1){
+                this.totalCost += product.price * quantity;
+                this.items.push({product, quantity});
+            }
+
+            getCurrentTotalCost(){  //возвращает текущую сумму заказа
+                return this.totalCost;
+            }
+
+            checkout(){    //оформляет заказ, выводит общюю стоимость заказа, благодарит по имени
+                console.log(`Заказ оформлен для ${this.customerName} Общая стоимость заказа ${this.totalCost}
+                 Спасибо за заказ!`);
+            }
+        }
+
+        const product1 = new Product('filter', 340);
+        const product2 = new Product('oil', 4350);
+        const product3 = new Product('shift', 11620);
+        const cart1 = new ShoppingCart('Nazarov', 0);
+        cart1.addItems(product1, 5);
+        cart1.addItems(product2, 2);
+        cart1.addItems(product3, 1);
+        cart1.checkout();
+        console.log(cart1.getCurrentTotalCost());
+
+    </script>
+</body>
+</html>
